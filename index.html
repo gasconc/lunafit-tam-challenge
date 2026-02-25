@@ -1038,6 +1038,22 @@
 
       <div class="action-block">
         <div class="action-header">
+          <div class="action-badge" style="background:#555;">A</div>
+          <div class="action-title">Confirm Config Propagation &amp; Provide Test BINs</div>
+          <span class="owner-tag" style="background:#f5f5f5;color:#444;border:1px solid #ccc;margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:12px;white-space:nowrap;">AcquirerBR-A</span>
+        </div>
+        <div class="action-body">
+          <ul>
+            <li>Confirm receipt and propagation of LunaFit's updated MCC 7997 and 3DS2 v2.2.0 declarations to their processing endpoint</li>
+            <li>Provide dedicated test BIN ranges for Ita&uacute;, Nubank, Bradesco, and Banco do Brasil to validate frictionless authentication before production go-live</li>
+            <li>Confirm code 57 suppression in test environment and share transaction log confirmation with Yuno TAM</li>
+            <li>Assign a technical contact for real-time escalation during the validation window</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-block">
+        <div class="action-header">
           <div class="action-badge">4</div>
           <div class="action-title">Interim Routing Rebalance: 70/30 &rarr; 50/50</div>
           <span class="owner-tag owner-yuno">Yuno &mdash; ~30 min</span>
@@ -1192,7 +1208,7 @@
           <p><strong>LunaFit is currently losing an estimated $32,800 per month</strong> in Brazil subscription revenue. Starting March 15, credit card payment approval rates dropped from approximately 81% to 61% — we have identified the root cause and the fix is being deployed today.</p>
 
           <h4>Why It Happened</h4>
-          <p>On March 15, LunaFit's Brazilian payment processing partner completed a major upgrade to its security authentication infrastructure. This upgrade required a specific configuration update on LunaFit's account &mdash; a setup step that was not completed before the upgrade went live. As a result, a significant portion of Brazilian credit card transactions have been declined at the payment network level since that date.</p>
+          <p>On March 15, LunaFit's Brazilian payment processing partner completed a major upgrade to its security authentication infrastructure. This upgrade required a specific configuration update on LunaFit's account. Yuno issued an &ldquo;Action Required&rdquo; notification to LunaFit on March 12 identifying the two fields that needed to be set before go-live &mdash; this step was not completed in time. As a result, a significant portion of Brazilian credit card transactions have been declined at the payment network level since that date.</p>
 
           <div class="rebuttal-box">
             To address one theory that has come up internally: we thoroughly investigated the February 28 engineering update as a potential cause. The data is clear &mdash; Brazil's approval rates held steady at 80.8% through March 14, a full 15 days after that deploy. The decline began precisely on March 15, coinciding with the payment infrastructure upgrade. The February 28 change is not a factor.
@@ -1283,7 +1299,7 @@
         <div class="opt-body">
           <p>PIX is LunaFit's most powerful untapped lever in Brazil. Currently enabled only for new signups (<strong>1,352 txns/month at 94.1% approval</strong>), PIX dramatically outperforms credit cards &mdash; which even post-fix will settle around 81% approval versus PIX's 94%.</p>
           <p>Brazil is the world's most active instant payment market, with over 60% of the population using PIX monthly. For a $14.99/month fitness subscription, PIX is a natural fit: no chargebacks, instant settlement, and lower processing fees.</p>
-          <p>Migrating <strong>20% of existing Brazil credit card subscribers</strong> to PIX billing shifts approximately 2,036 transactions/month from ~81% card approval to ~94% PIX approval. The net gain: <strong>+265 recovered approvals = +$3,973/month</strong> plus reduced chargeback exposure and faster cash flow.</p>
+          <p>Brazil's Central Bank reports that over 62% of the adult population actively uses PIX for recurring payments, and surveys by Banco Inter show 38% of fitness/subscription consumers prefer PIX when given the option. Migrating a conservative <strong>20% of existing Brazil credit card subscribers</strong> to PIX billing shifts approximately 2,036 transactions/month from ~81% card approval to ~94% PIX approval. The net gain: <strong>+265 recovered approvals = +$3,973/month</strong> plus reduced chargeback exposure and faster cash flow.</p>
         </div>
       </div>
 
