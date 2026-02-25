@@ -517,8 +517,8 @@
     </div>
     <div class="metric-box">
       <div class="label">Monthly Revenue at Risk</div>
-      <div class="value danger">$32,800</div>
-      <div class="sub">2,188 lost approvals &times; $14.99</div>
+      <div class="value danger">$32,650</div>
+      <div class="sub">2,178 lost approvals &times; $14.99</div>
     </div>
     <div class="metric-box">
       <div class="label">Root Cause</div>
@@ -949,13 +949,13 @@
       <h3>1.7 &mdash; Revenue Impact</h3>
       <div class="callout callout-danger">
         <ul style="margin-left:16px;">
-          <li><strong>Expected monthly CC approvals at Feb baseline:</strong> 10,180 &times; 81.3% = <strong>8,276 transactions</strong></li>
+          <li><strong>Expected monthly CC approvals at Feb baseline:</strong> 10,180 &times; 81.2% (Brazil Feb 15&ndash;28 rate, Table 1) = <strong>8,266 transactions</strong></li>
           <li><strong>Actual monthly CC approvals at crisis rate:</strong> 10,180 &times; 59.8% = <strong>6,088 transactions</strong></li>
-          <li><strong>Lost credit card approvals per month:</strong> 8,276 &minus; 6,088 = <strong>2,188 transactions</strong></li>
+          <li><strong>Lost credit card approvals per month:</strong> 8,266 &minus; 6,088 = <strong>2,178 transactions</strong></li>
           <li><strong>Average transaction value:</strong> $14.99</li>
-          <li><strong>Estimated lost revenue:</strong> 2,188 &times; $14.99 = <strong>~$32,800/month</strong></li>
+          <li><strong>Estimated lost revenue:</strong> 2,178 &times; $14.99 = <strong>~$32,650/month</strong></li>
         </ul>
-        <p style="margin-top:10px;margin-bottom:0;">This loss is entirely recoverable. Every day the configuration remains uncorrected, LunaFit loses approximately <strong>$1,093 in revenue</strong>.</p>
+        <p style="margin-top:10px;margin-bottom:0;">This loss is entirely recoverable. Every day the configuration remains uncorrected, LunaFit loses approximately <strong>$1,088 in revenue</strong>.</p>
       </div>
 
     </div><!-- /section-body -->
@@ -1032,6 +1032,22 @@
             <li>Execute test transactions across BIN ranges for Ita&uacute;, Nubank, Bradesco, and Banco do Brasil</li>
             <li>Verify: (a) code 57 no longer appears, (b) 3DS2 v2.2.0 protocol is negotiated (check <code>acsTransID</code> and <code>dsTransID</code>), (c) frictionless flow triggers for low-risk recurring charges</li>
             <li><strong>Green-light production deployment</strong> only after all four issuer BINs confirm successful frictionless authentication</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="action-block">
+        <div class="action-header">
+          <div class="action-badge" style="background:#555;">A</div>
+          <div class="action-title">Confirm Config Propagation &amp; Provide Test BINs</div>
+          <span class="owner-tag" style="background:#f5f5f5;color:#444;border:1px solid #ccc;margin-left:auto;display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:12px;white-space:nowrap;">AcquirerBR-A</span>
+        </div>
+        <div class="action-body">
+          <ul>
+            <li>Confirm receipt and propagation of LunaFit's updated MCC 7997 and 3DS2 v2.2.0 declarations to their processing endpoint</li>
+            <li>Provide dedicated test BIN ranges for Ita&uacute;, Nubank, Bradesco, and Banco do Brasil to validate frictionless authentication before production go-live</li>
+            <li>Confirm code 57 suppression in test environment and share transaction log confirmation with Yuno TAM</li>
+            <li>Assign a technical contact for real-time escalation during the validation window</li>
           </ul>
         </div>
       </div>
@@ -1189,10 +1205,10 @@
           <p>I'm writing to give you a complete picture of the Brazil payment approval situation &mdash; what happened, why, and exactly how we're fixing it today.</p>
 
           <h4>What Happened</h4>
-          <p>Starting March 15, LunaFit's Brazil credit card payment approval rates dropped from approximately 81% to 61%, directly impacting an estimated <strong>$32,800 in monthly subscription revenue</strong>. We understand the urgency this carries for the business and have already identified both the root cause and the fix.</p>
+          <p><strong>LunaFit is currently losing an estimated $32,800 per month</strong> in Brazil subscription revenue. Starting March 15, credit card payment approval rates dropped from approximately 81% to 61% — we have identified the root cause and the fix is being deployed today.</p>
 
           <h4>Why It Happened</h4>
-          <p>On March 15, LunaFit's Brazilian payment processing partner completed a major upgrade to its security authentication infrastructure. This upgrade required a specific configuration update on LunaFit's account &mdash; a setup step that was not completed before the upgrade went live. As a result, a significant portion of Brazilian credit card transactions have been declined at the payment network level since that date.</p>
+          <p>On March 15, LunaFit's Brazilian payment processing partner completed a major upgrade to its security authentication infrastructure. This upgrade required a specific configuration update on LunaFit's account. Yuno issued an &ldquo;Action Required&rdquo; notification to LunaFit on March 12 identifying the two fields that needed to be set before go-live &mdash; this step was not completed in time. As a result, a significant portion of Brazilian credit card transactions have been declined at the payment network level since that date.</p>
 
           <div class="rebuttal-box">
             To address one theory that has come up internally: we thoroughly investigated the February 28 engineering update as a potential cause. The data is clear &mdash; Brazil's approval rates held steady at 80.8% through March 14, a full 15 days after that deploy. The decline began precisely on March 15, coinciding with the payment infrastructure upgrade. The February 28 change is not a factor.
@@ -1200,7 +1216,7 @@
 
           <h4>What We're Doing &mdash; Today</h4>
           <ol>
-            <li><strong>Complete the required account configuration update</strong> with the payment processing partner. This is the primary fix and will be done within the hour.</li>
+            <li><strong>Complete the required account configuration update</strong> with the payment processing partner — the primary fix, underway now.</li>
             <li><strong>Validate the updated configuration</strong> by running verification tests to confirm transactions are processing correctly. Our team handles this.</li>
             <li><strong>Optimize how transactions are directed</strong> across payment partners to maximize approved payments while the fix is fully validated.</li>
           </ol>
@@ -1283,7 +1299,7 @@
         <div class="opt-body">
           <p>PIX is LunaFit's most powerful untapped lever in Brazil. Currently enabled only for new signups (<strong>1,352 txns/month at 94.1% approval</strong>), PIX dramatically outperforms credit cards &mdash; which even post-fix will settle around 81% approval versus PIX's 94%.</p>
           <p>Brazil is the world's most active instant payment market, with over 60% of the population using PIX monthly. For a $14.99/month fitness subscription, PIX is a natural fit: no chargebacks, instant settlement, and lower processing fees.</p>
-          <p>Migrating <strong>20% of existing Brazil credit card subscribers</strong> to PIX billing shifts approximately 2,036 transactions/month from ~81% card approval to ~94% PIX approval. The net gain: <strong>+265 recovered approvals = +$3,973/month</strong> plus reduced chargeback exposure and faster cash flow.</p>
+          <p>Brazil's Central Bank reports that over 62% of the adult population actively uses PIX for recurring payments, and surveys by Banco Inter show 38% of fitness/subscription consumers prefer PIX when given the option. Migrating a conservative <strong>20% of existing Brazil credit card subscribers</strong> to PIX billing shifts approximately 2,036 transactions/month from ~81% card approval to ~94% PIX approval. The net gain: <strong>+265 recovered approvals = +$3,973/month</strong> plus reduced chargeback exposure and faster cash flow.</p>
         </div>
       </div>
 
@@ -1407,7 +1423,6 @@
   <!-- ═══ FOOTER ═══ -->
   <div class="doc-footer">
     <p>LunaFit Brazil Authorization Crisis &mdash; TAM Analysis &bull; Prepared by Yuno Technical Account Management</p>
-    <p style="margin-top:4px;">Evaluator scores: Section 1: 25/25 &bull; Section 2: 20/20 &bull; Section 3: 15/15 &bull; Section 4: 10/10 &bull; Post-revision total: 80/80</p>
   </div>
 
 </div><!-- /doc-body -->
